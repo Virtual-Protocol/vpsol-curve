@@ -1,0 +1,33 @@
+[package]
+name = "virtuals-curve"
+version = "0.1.0"
+authors = ["Dean Little (@deanmlittle)"]
+edition = "2021"
+description = "A Constant Product Curve for the Virtuals launchpad"
+repository = "https://github.com/blueshift-gg/virtuals-curve"
+license = "MIT"
+
+[lib]
+name = "virtuals_curve"
+crate-type = ["cdylib", "lib"]
+
+[features]
+default = []
+anchor = ["anchor-lang"]
+
+[dependencies]
+anchor-lang = { version = "0.30.1", optional = true }
+wasm-bindgen = { version = "0.2.92", optional = true }
+console_error_panic_hook = { version = "0.1.7", optional = true }
+js-sys = { version = "0.3.77", optional = true }
+serde = { version = "1.0.217", features = ["derive"]} 
+serde_derive = "1.0.217"
+serde-wasm-bindgen = { version = "0.6.5", optional = true }
+thiserror = "2.0.11"
+anyhow = "1.0.95"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "0.2.92"
+console_error_panic_hook = "0.1.7"
+serde-wasm-bindgen = "0.6.5"
+js-sys = "0.3.77"
